@@ -1,14 +1,20 @@
 'use strict';
 
 const get = (obj, string) => {
-    if (string === undefined || !string) return undefined; 
-    if (string === '.') return obj;
+    if (typeof string === 'undefined' || !string) {
+        return;
+    } 
+    if (string === '.') {
+        return obj;
+    } 
 
-    var arrayKeys = string.slice(1).split(".");
+    const arrayKeys = string.slice(1).split('.');
 
-    for (let index in arrayKeys) {
-        if (obj.hasOwnProperty(arrayKeys[index])) obj = obj[arrayKeys[index]];
-        else return undefined;
+    for (let value of arrayKeys) {
+        if (obj.hasOwnProperty(value)) obj = obj[value];
+        else {
+            return;
+        }
     }
     return obj;
 };
