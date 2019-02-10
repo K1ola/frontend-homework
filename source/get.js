@@ -11,7 +11,7 @@ const get = (obj, string) => {
     const arrayKeys = string.slice(1).split('.');
 
     for (let value of arrayKeys) {
-        if (({}).hasOwnProperty.call(obj, value)) {
+        if (Object.prototype.hasOwnProperty.call(obj, value)) {
             obj = obj[value];
         } 
         else {

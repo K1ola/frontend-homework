@@ -82,4 +82,16 @@ QUnit.module('Тестируем функцию get', function () {
 		assert.strictEqual(get(object, null), undefined);
 		assert.strictEqual(get(object), undefined);
 	});
+	
+	QUnit.test('get работает правильно c переопределенным методом hasOwnProperty()', function (assert) {
+		const object = {
+			hasOwnProperty: function() {
+			  return false;
+			},
+			bar: 'baz'
+		};
+
+		assert.strictEqual(get(object, '.bar'), object.bar);
+		
+	});
 });
