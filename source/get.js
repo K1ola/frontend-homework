@@ -1,7 +1,7 @@
 'use strict';
 
 const get = (obj, string) => {
-    if (typeof string === 'undefined' || !string) {
+    if (!string) {
         return;
     } 
     if (string === '.') {
@@ -11,12 +11,10 @@ const get = (obj, string) => {
     const arrayKeys = string.slice(1).split('.');
 
     for (let value of arrayKeys) {
-        if (Object.prototype.hasOwnProperty.call(obj, value)) {
-            obj = obj[value];
-        } 
-        else {
+        if (!Object.prototype.hasOwnProperty.call(obj, value)) {
             return;
-        }
+        } 
+        obj = obj[value];
     }
     return obj;
 };
