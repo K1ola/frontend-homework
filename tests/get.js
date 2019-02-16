@@ -91,7 +91,26 @@ QUnit.module('Тестируем функцию get', function () {
 			bar: 'baz'
 		};
 
-		assert.strictEqual(get(object, '.bar'), object.bar);
-		
+		assert.strictEqual(get(object, '.bar'), object.bar);		
+	});	
+
+	QUnit.test('get работает правильно cо вторым параметром не строкой', function (assert) {
+		const object = {
+			bar: 'baz'
+		};
+
+		const string1 = '.bar';
+		const string2 = new String('.bar');
+		const notString1 = ['.bar'];
+		const notString2 = {
+			bar: '.bar'
+		};
+		const notString3 = new Number(5);
+
+		assert.strictEqual(get(object, string1), object.bar);
+		assert.strictEqual(get(object, string2), object.bar);		
+		assert.strictEqual(get(object, notString1), undefined);		
+		assert.strictEqual(get(object, notString2), undefined);		
+		assert.strictEqual(get(object, notString3), undefined);				
 	});
 });

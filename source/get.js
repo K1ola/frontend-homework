@@ -1,7 +1,7 @@
 'use strict';
 
 const get = (obj, string) => {
-    if (!string) {
+    if (!string || toString.call(string) !== '[object String]') {
         return;
     } 
     if (string === '.') {
