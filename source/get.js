@@ -1,7 +1,7 @@
 'use strict';
 
 const get = (obj, string) => {
-    if (!string || typeof string !== "string") {
+    if (!string || typeof string !== 'string') {
         return;
     } 
     if (string === '.') {
