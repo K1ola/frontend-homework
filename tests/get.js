@@ -100,15 +100,13 @@ QUnit.module('Тестируем функцию get', function () {
 		};
 
 		const string1 = '.bar';
-		const string2 = new String('.bar');
 		const notString1 = ['.bar'];
 		const notString2 = {
 			bar: '.bar'
 		};
 		const notString3 = new Number(5);
 
-		assert.strictEqual(get(object, string1), object.bar);
-		assert.strictEqual(get(object, string2), object.bar);		
+		assert.strictEqual(get(object, string1), object.bar);	
 		assert.strictEqual(get(object, notString1), undefined);		
 		assert.strictEqual(get(object, notString2), undefined);		
 		assert.strictEqual(get(object, notString3), undefined);				
